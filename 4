@@ -1,0 +1,44 @@
+Experiment 4 
+a. Execute query selectors (Geospatial selectors ) and list out  the results on any 
+collection 
+Geospatial Selectors in MongoDB 
+use locationDB 
+// Switch to the database named locationDB. If it does not exist, MongoDB will create it. 
+// Store the geographical location using GeoJSON format (longitude, latitude) 
+// Insert multiple place documents into the collection 
+ 
+db.places.insertMany([ 
+  { 
+    name: "College",        // Name of the place 
+    location: { 
+      type: "Point",        // GeoJSON type 
+      coordinates: [77.60, 12.97]   // Longitude and Latitude 
+    } 
+  }, 
+  { 
+    name: "Library", 
+    location: { 
+      type: "Point", 
+      coordinates: [77.61, 12.98] 
+    } 
+  }, 
+ 
+  { 
+    name: "Cafe", 
+    location: { 
+      type: "Point", 
+      coordinates: [77.59, 12.96] 
+    } 
+  }, 
+ 
+  { 
+    name: "Hospital", 
+location: { 
+type: "Point", 
+coordinates: [77.62, 12.99] 
+} 
+} 
+]) 
+Query 
+db.places.find({ location:{  $near:{   $geometry:{ type:"Point", 
+coordinates:[77.60,12.97] }, $maxDistance:500  } }}) 
