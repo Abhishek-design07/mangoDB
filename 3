@@ -1,0 +1,73 @@
+Experiment 3:  
+Create and demonstrate how projection operators would be used:  
+db.createCollection("students")  // Create a collection named "students" 
+Database 
+db.students.insertMany([ 
+{ 
+name: "Alice", 
+age: 23, 
+grades: [ 
+{ subject: "Math", score: 85 }, 
+{ subject: "Science", score: 78 }, 
+{ subject: "English", score: 92 } 
+] 
+}, 
+{ 
+name: "Bob", 
+age: 25, 
+grades: [ 
+{ subject: "Math", score: 65 }, 
+{ subject: "Science", score: 88 }, 
+{ subject: "English", score: 73 } 
+] 
+}, 
+{ 
+name: "Charlie", 
+age: 27, 
+grades: [ 
+{ subject: "Math", score: 90 }, 
+{ subject: "Science", score: 81 }, 
+{ subject: "English", score: 76 } 
+] 
+}, 
+{ 
+name: "Diana", 
+age: 22, 
+grades: [ 
+{ subject: "Math", score: 70 }, 
+{ subject: "Science", score: 95 }, 
+{ subject: "English", score: 89 } 
+] 
+}, 
+{ 
+name: "Ethan", 
+age: 24, 
+grades: [ 
+{ subject: "Math", score: 88 }, 
+{ subject: "Science", score: 67 }, 
+{ subject: "English", score: 84 } 
+] 
+}, 
+{ 
+name: "Fiona", 
+age: 26, 
+grades: [ 
+{ subject: "Math", score: 72 }, 
+{ subject: "Science", score: 91 }, 
+{ subject: "English", score: 80 } 
+] 
+} 
+]) 
+• Queries   
+// $ projection operator   
+db.students.find( 
+{ "grades.score": { $gt: 80 } }, 
+{ "grades.$": 1 } 
+) 
+// $elemMatch projection operator  
+db.students.find( 
+{}, 
+{ grades: { $elemMatch: { score: { $gt: 80 } } } } 
+) 
+// $slice projection operator   
+db.students.find({}, { grades: { $slice: 2 } })  
