@@ -1,0 +1,27 @@
+Experiment 5 
+Execute query selectors (comparison selectors, logical selectors ) and list  out the 
+results on any collection  
+use studentDB 
+// Switch to database studentDB (creates the database if it does not exist) 
+Insert Documents into Collection 
+db.students.insertMany([ 
+{ name: "Rahul", age: 21, marks: 78, department: "AIML" }, 
+{ name: "Anita", age: 22, marks: 85, department: "ISE" }, 
+{ name: "Kiran", age: 20, marks: 65, department: "CSE" }, 
+{ name: "Meena", age: 23, marks: 90, department: "ECE" }, 
+{ name: "Arjun", age: 21, marks: 55, department: "CSE" } 
+]) 
+QUERY 
+Comparison Selectors 
+1. Greater Than ($gt) 
+db.students.find({ marks: { $gt: 70 } }) 
+// Finds students whose marks are greater than 70 
+2. Less Than ($lt) 
+db.students.find({ marks: { $lt: 70 } }) 
+// Finds students whose marks are less than 70 
+3. Greater Than or Equal ($gte) 
+db.students.find({ age: { $gte: 22 } }) 
+// Finds students whose age is greater than or equal to 22 
+4. Not Equal ($ne) 
+db.students.find({ department: { $ne: "CSE" } }) 
+// Finds students whose department is not CSE 
