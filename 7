@@ -1,0 +1,35 @@
+Experiment 7 
+Using E-commerce collection write a query to display reviews summary. 
+The program displays a summary of product reviews by counting total reviews 
+and calculating average ratings for each product using aggregation operations. 
+Create  Database 
+use ecommerceDB 
+Insert Data 
+db.ecommerce.insertMany([ 
+{ 
+product: "Laptop", 
+reviews: [ 
+{ user: "A", rating: 5 }, 
+{ user: "B", rating: 4 } 
+] 
+}, 
+{ 
+product: "Mobile", 
+reviews: [ 
+{ user: "C", rating: 3 }, 
+{ user: "D", rating: 4 }, 
+{ user: "E", rating: 5 } 
+] 
+} 
+]) 
+Run Reviews Summary Query 
+db.ecommerce.aggregate([ 
+{ $unwind: "$reviews" }, 
+{ 
+$group: { 
+_id: "$product", 
+totalReviews: { $sum: 1 }, 
+avgRating: { $avg: "$reviews.rating" } 
+} 
+} 
+]) 
