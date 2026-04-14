@@ -1,0 +1,10 @@
+
+Experiment 2:  
+a. Develop a MongoDB query to select certain fields and ignore some fields of 
+the documents:  
+(use database from experiment 1) 
+// Select certain fields and ignore some fields   
+db.users.find({}, { name: 1, age: 1, _id: 0 })  
+b. Develop a MongoDB query to display the first 5 documents: 
+// Display the first 5 documents   
+db.users.find().limit(5)  
