@@ -1,0 +1,19 @@
+EXPERIMENT 8 
+Develop a query to demonstrate Text search using catalog data collection for a given 
+word  
+This demonstrates how to perform text search on a catalog collection. 
+● First, product data is inserted into the collection. 
+● Then, a text index is created on the description field to enable searching. 
+● Finally, the $text query is used to search for a specific word (e.g., "gaming"). 
+_______________________________________________________________ 
+
+sample data 
+db.catalog.insertMany([ 
+{ name: "Laptop", description: "Good for gaming" }, 
+{ name: "Mouse", description: "Gaming device" }, 
+{ name: "Chair", description: "Office furniture" } 
+]) 
+Create text index 
+db.catalog.createIndex({ description: "text" }) 
+Text search query (for word "gaming") 
+db.catalog.find( {  $text: { $search: "gaming" } }) 
