@@ -1,8 +1,5 @@
-Experiment 1:  
-a. Illustration of Where Clause, AND, OR operations in MongoDB:  
-• Create a Database and Collection  
-use mydatabase // Switch to your database   
-db.createCollection("users") // Create a collection named "users"  
+use mydatabase    
+db.createCollection("users")   
 • Insert Sample Documents into users Collection  
 db.users.insertMany([  
 { name: "John ", age: 28, gender: "male" },  
@@ -12,21 +9,12 @@ db.users.insertMany([
 { name: "Chris ", age: 22, gender: "male" },  
 { name: "Sophia", age: 35, gender: "female" }  
 ])  
-• Queries   
-// Find documents where age is greater than 25 and gender is "male"   
 db.users.find({ $and: [{ age: { $gt: 25 } }, { gender: "male" }] }) 
-// Find documents where age is greater than 30 or gender is "female"  
-db.users.find({ $or: [{ age: { $gt: 30 } }, { gender: "female" }] }) 
-b. Execute the Commands of MongoDB and operations in MongoDB:  
-• Queries   
-// Insert document  
-db.users.insertOne({ name: "Bob", age: 35, gender: "male" }) 
-// Query document   
+  
+db.users.find({ $or: [{ age: { $gt: 30 } }, { gender: "female" }] })   
+db.users.insertOne({ name: "Bob", age: 35, gender: "male" })
 db.users.find({ age: { $gt: 30 } })  
-// Update document  
 db.users.updateOne({ name: "John" }, { $set: { age: 40 } }) 
-// Delete document  
 db.users.deleteOne({ name: "John" })  
-// Projection  
 db.users.find({}, { name: 1, age: 1 })  
 ___________________________________________________________________________________________________
