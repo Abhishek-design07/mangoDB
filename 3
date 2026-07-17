@@ -1,7 +1,3 @@
-Experiment 3:  
-Create and demonstrate how projection operators would be used:  
-db.createCollection("students")  // Create a collection named "students" 
-Database 
 db.students.insertMany([ 
 { 
 name: "Alice", 
@@ -57,17 +53,13 @@ grades: [
 { subject: "English", score: 80 } 
 ] 
 } 
-]) 
-• Queries   
-// $ projection operator   
+])
 db.students.find( 
 { "grades.score": { $gt: 80 } }, 
 { "grades.$": 1 } 
-) 
-// $elemMatch projection operator  
+)
 db.students.find( 
 {}, 
 { grades: { $elemMatch: { score: { $gt: 80 } } } } 
-) 
-// $slice projection operator   
-db.students.find({}, { grades: { $slice: 2 } })  
+)
+db.students.find({}, { grades: { $slice: 2 } }) 
