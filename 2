@@ -1,3 +1,13 @@
-  db.users.find({}, { name: 1, age: 1, _id: 0 })   
-// Display the first 5 documents   
-db.users.find().limit(5)  
+use mydatabase 
+db.createCollection("users")   
+
+db.users.insertMany([  
+{ name: "John ", age: 28, gender: "male" },  
+{ name: "Jane ", age: 24, gender: "female" },  
+{ name: "Mike ", age: 32, gender: "male" },  
+{ name: "Emily ", age: 29, gender: "female" },  
+{ name: "Chris ", age: 22, gender: "male" },  
+{ name: "Sophia", age: 35, gender: "female" }  
+]) 
+db.users.find({}, { name: 1, age: 1, _id: 0 }) 
+db.users.find().limit(5) 
